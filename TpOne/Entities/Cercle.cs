@@ -18,18 +18,15 @@ namespace TpOne.Entities
             set { rayon = value; }
         }
 
-        public override void Aire()
-        {
-            aire = Math.PI*rayon*rayon;
-        }
+       
+        public override double Aire => Math.PI*rayon*rayon;
 
-        public override void Perimetre()
-        {
-            perimetre = 2 * Math.PI * rayon;
-        }
+        public override double Perimetre => 2 * Math.PI * rayon; 
+        
+        
         public override string ToString()
         {
-            return base.ToString();
+            return "Circle " + Rayon + base.ToString();
         }
     }
 }

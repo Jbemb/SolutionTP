@@ -8,25 +8,29 @@ namespace TpOne.Entities
 {
     class Rectangle : Forme
     {
-        private int width;
-        public virtual int Height { get; set; }
-        private double aire;
-        private double perimetre;
+        private int largeur;
+        private int longeur;
 
-        public int Width
+        public virtual int Largeur
         {
-            get { return width; }
-            set { width = value; }
+            get { return largeur; }
+            set { largeur = value; }
         }
 
-        public override void Aire()
+        public int Longeur
         {
-            aire = width*Height;
+            get { return longeur; }
+            set { longeur = value; }
         }
 
-        public override void Perimetre()
+        public override double Aire => longeur * largeur;
+
+        public override double Perimetre => 2 * longeur + 2 * largeur;
+    }
+
+        public override string ToString()
         {
-            perimetre = (2 * width) + (2 * Height);
+            return "Rectangle - width: {0} and height: {1} \n " + base.ToString();
         }
     }
 }

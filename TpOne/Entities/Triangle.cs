@@ -8,25 +8,36 @@ namespace TpOne.Entities
 {
     class Triangle : Forme
     {
-        public int A { get; set; }
-        public int B { get; set; }
-        public int C { get; set; }
-        public int perimetre { get; private set; }
-        private double p;
-        private double aire { get; set; }
-       
+        private double a;
 
-
-
-        public override void Aire()
+        public double A
         {
-            p = (this.A + this.B + this.C) / 2;
-            aire = Math.Sqrt(p * (p - this.A) * (p - this.B) * (p - this.C));
-    }
-
-        public override void Perimetre()
-        {
-            perimetre = this.A + this.B + this.C;
+            get { return a; }
+            set { a = value; }
         }
+        private double b;
+
+        public double B
+        {
+            get { return b; }
+            set { b = value; }
+        }
+
+        private double c;
+
+        public double C
+        {
+            get { return c; }
+            set { c = value; }
+        }
+
+    
+        private double p => (A + B + C) / 2;
+  
+        public override double Aire => Math.Sqrt(p * (p - this.A) * (p - this.B) * (p - this.C));
+    
+
+        public override double Perimetre=> A + B + C;
+        
     }
 }

@@ -10,15 +10,22 @@ namespace TpOne.Entities
 
     public abstract class Forme
     {
-		
-		public abstract void Aire();
+        public abstract double Aire { get; }
+        public abstract double Perimetre { get; }
 
-		public abstract void Perimetre();
+        public virtual String Print()
+        {
+            return displayAP(Aire, Perimetre);
+        }
 
-		public override string ToString()
-		{
-			return //$"Area = {Aire} Perimeter = {Perimetre}" + 
-				base.ToString();
-		}
-	}
+        protected Func<double, double, string> displayAP = new Func<double, double, string>((a, p) => {
+            return "Aire = " + a + "\nPérimètre = " + p + "\n";
+        });
+
+        public override string ToString()
+        {
+           return Print();
+           //return String.Format("\n Perimeter: {2} \n Area: {3}\n", this.Perimetre, this.Aire);
+        }
+    }
 }
