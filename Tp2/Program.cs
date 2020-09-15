@@ -55,15 +55,12 @@ namespace Tp2
             //}
 
             //Dictionary<Auteur, List<Livre>> booksByAuthor = new Dictionary<Auteur, List<Livre>>(); 
-            //foreach (IGrouping<Auteur, Livre> item in ListeLivres.GroupBy(x => x.Auteur))
-            //{
-            //    booksByAuthor.Add(item.Key, item);
-            //    //do only once for the first one
-            //    //.OrderByDescending(x => x)
-            //    //Console.WriteLine(item.Key.Prenom + " " + item.Key.Nom);
-            //}
+            IGrouping<Auteur, Livre> liste = ListeLivres.GroupBy(x => x.Auteur).OrderByDescending(x => x.Count()).FirstOrDefault();
+            Console.WriteLine("Question 2");
+                Console.WriteLine(liste.Key.Prenom + " " + liste.Key.Nom);
+           
 
-           // 3 average pages by livres by author
+            // 3 average pages by livres by author
             foreach (IGrouping<Auteur, Livre> item in ListeLivres.GroupBy(x => x.Auteur))
             {
                 Console.WriteLine(item.Average(x => x.NbPages) + " " + item.Key.Nom);
