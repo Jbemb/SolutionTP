@@ -58,8 +58,8 @@ namespace Tp2
             IGrouping<Auteur, Livre> liste = ListeLivres.GroupBy(x => x.Auteur).OrderByDescending(x => x.Count()).FirstOrDefault();
             Console.WriteLine("Question 2");
                 Console.WriteLine(liste.Key.Prenom + " " + liste.Key.Nom);
-           
 
+            Console.WriteLine("Question 3");
             // 3 average pages by livres by author
             foreach (IGrouping<Auteur, Livre> item in ListeLivres.GroupBy(x => x.Auteur))
             {
@@ -69,17 +69,17 @@ namespace Tp2
                 //.OrderByDescending(x => x)
                 //Console.WriteLine(item.Key.Prenom + " " + item.Key.Nom);
             }
-
+            Console.WriteLine("Question 4");
             // 4 Afficher le titre du livre avec le plus de pages
-            Console.WriteLine(ListeLivres.OrderBy(x => x.NbPages).First().Titre);
+            Console.WriteLine(ListeLivres.OrderByDescending(x => x.NbPages).First().Titre);
 
             //5 Afficher combien ont gagné les auteurs en moyenne(moyenne des factures)
             //class1s.SelectMany(x => x.MyProperty)
             //foreach (var item in ListeAuteurs.SelectMany(x => x.Factures)) 
             //{ 
-                
-            //}
 
+            //}
+            Console.WriteLine("Question 6");
             //6 Afficher les auteurs et la liste de leurs livres
             foreach (IGrouping<Auteur, Livre> item in ListeLivres.GroupBy(x => x.Auteur)) 
             {
@@ -90,13 +90,13 @@ namespace Tp2
                 }
                 Console.WriteLine("/////////////");
             }
-
+            Console.WriteLine("Question 7");
             // 7 Afficher les titres de tous les livres triés par ordre alphabétique
             foreach (var item in ListeLivres.OrderBy(x => x.Titre))
             {
                 Console.WriteLine(item.Titre);
             }
-
+            Console.WriteLine("Question 8");
             // 8 Afficher la liste des livres dont le nombre de pagesest supérieurà la moyenne
             Console.WriteLine("Afficher la liste des livres dont le nombre de pagesest supérieurà la moyenne");
             double average = ListeLivres.Average(x => x.NbPages);
