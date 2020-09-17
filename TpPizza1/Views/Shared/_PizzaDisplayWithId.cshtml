@@ -1,0 +1,6 @@
+﻿@model TpPizza1.Models.CreateAndEditPizzaViewModel
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(model => model.Pizza.Id)
+
+@Html.Partial("_PizzaDisplay")
