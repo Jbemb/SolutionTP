@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp2.BO
+namespace ProjetLinq.BO
 {
     public class Auteur
     {
