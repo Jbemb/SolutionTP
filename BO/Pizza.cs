@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BO.Validation;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +11,17 @@ namespace BO
     public class Pizza
     {
         public int Id { get; set; }
-        public string Nom { get; set; }
-        public Pate Pate { get; set; }
-        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 
+        [Required]
+        [System.ComponentModel.DataAnnotations.MinLength(5)]
+        [System.ComponentModel.DataAnnotations.MaxLength(20)]
+        [PizzaUnique]
+        public string Nom { get; set; }
+        
+        public Pate Pate { get; set; }
+     
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+     
         public static List<Ingredient> IngredientsDisponibles => new List<Ingredient>
         {
             new Ingredient{Id=1,Nom="Mozzarella"},

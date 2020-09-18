@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TpPizza1.Data;
+using BO.Data;
 using TpPizza1.Models;
 
 namespace TpPizza1.Controllers
@@ -43,17 +43,18 @@ namespace TpPizza1.Controllers
         {
             try
             {
-
-                //for refractioning
-                if (ModelState.IsValid && ValidateVM(vm))
+                Pizza pizza = vm.Pizza;
+                pizza.Pate = FakeDb.Instance.ListePates.FirstOrDefault(x => x.Id == vm.IdPate);
+                foreach (var item in vm.IngredientsId)
                 {
-                    Pizza pizza = vm.Pizza;
+                    pizza.Ingredients.Add(BO.Data.FakeDb.Instance.ListeIngredients.FirstOrDefault(x => x.Id == item));
+                }
+                //for refractioning
+                if (ModelState.IsValid)
+                {
+                    
                     // TODO: Add insert logic here
-                    pizza.Pate = FakeDb.Instance.ListePates.FirstOrDefault(x => x.Id == vm.IdPate);
-                    foreach (var item in vm.IngredientsId)
-                    {
-                        pizza.Ingredients.Add(FakeDb.Instance.ListeIngredients.FirstOrDefault(x => x.Id == item));
-                    }
+                    
                     pizza.Id = FakeDb.Instance.ListePizzas.Count == 0 ? 1 : FakeDb.Instance.ListePizzas.Max(x => x.Id) + 1;
 
                     FakeDb.Instance.ListePizzas.Add(pizza);
@@ -62,6 +63,7 @@ namespace TpPizza1.Controllers
                 }
                 else 
                 {
+                 
                     vm.Pates = FakeDb.Instance.ListePates;
                     vm.Ingredients = FakeDb.Instance.ListeIngredients;
                     return View(vm);
