@@ -1,10 +1,10 @@
-﻿using BO;
+﻿using BODojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BO.Data
+namespace BODojo.Data
 {
     public class FakeDb
     {

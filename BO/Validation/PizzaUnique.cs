@@ -1,12 +1,12 @@
-﻿using BO;
+﻿using BODojo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using BO.Data;
+using BODojo.Data;
 
-namespace BO.Validation
+namespace BODojo.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class PizzaUnique : ValidationAttribute

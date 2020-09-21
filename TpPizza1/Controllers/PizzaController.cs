@@ -1,10 +1,10 @@
-﻿using BO;
+﻿using BODojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BO.Data;
+using BODojo.Data;
 using TpPizza1.Models;
 
 namespace TpPizza1.Controllers
@@ -47,7 +47,7 @@ namespace TpPizza1.Controllers
                 pizza.Pate = FakeDb.Instance.ListePates.FirstOrDefault(x => x.Id == vm.IdPate);
                 foreach (var item in vm.IngredientsId)
                 {
-                    pizza.Ingredients.Add(BO.Data.FakeDb.Instance.ListeIngredients.FirstOrDefault(x => x.Id == item));
+                    pizza.Ingredients.Add(BODojo.Data.FakeDb.Instance.ListeIngredients.FirstOrDefault(x => x.Id == item));
                 }
                 //for refractioning
                 if (ModelState.IsValid)

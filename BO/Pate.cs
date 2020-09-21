@@ -1,4 +1,4 @@
-﻿namespace BO
+﻿namespace BODojo
 {
     public class Pate
     {

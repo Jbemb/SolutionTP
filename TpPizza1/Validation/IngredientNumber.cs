@@ -11,9 +11,11 @@ namespace TpPizza1.Validation
     {
         public override bool IsValid(object value)
         {
+            //add vairables and constructor with the variables to be able to pass the min and max in the annotation
             bool result = false;
             int n = 0;
             var testItem = value as List<int>;
+            //use count function instead
             foreach (var item in testItem) 
             { 
                 n++;

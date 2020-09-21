@@ -1,5 +1,5 @@
-﻿using BO;
-using BO.Data;
+﻿using BODojo;
+using BODojo.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
