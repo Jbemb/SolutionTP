@@ -15,6 +15,7 @@ namespace TpPizza1.Models
         [System.ComponentModel.DataAnnotations.Required]
         public int? IdPate { get; set; }
         public IEnumerable<Ingredient> Ingredients { get; set; }
+        [UniqueIngredients]
         [System.ComponentModel.DataAnnotations.Required]
         [IngredientNumber]
         public List<int> IngredientsId { get; set; } = new List<int>();
