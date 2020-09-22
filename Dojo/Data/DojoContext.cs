@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BO;
+using BODojo;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -22,5 +24,11 @@ namespace Dojo.Data
         public System.Data.Entity.DbSet<BODojo.Samourai> Samourais { get; set; }
 
         public System.Data.Entity.DbSet<BODojo.Arme> Armes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Samourai>().HasOptional(s => s.Arme).WithOptionalPrincipal();
+            modelBuilder.Entity<Samourai>().HasMany(s => s.Artmartials).WithMany();
+        }
     }
 }
