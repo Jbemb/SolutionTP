@@ -102,7 +102,8 @@ namespace Dojo.Controllers
             {
                 return HttpNotFound();
             }
-            return View(arme);
+           
+             return View(arme);
         }
 
         // POST: Armes/Delete/5
@@ -111,6 +112,18 @@ namespace Dojo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Arme arme = db.Armes.Find(id);
+            List<Samourai> sams = db.Samourais.ToList();
+            var samWithArmes = sams.Where(x => x.Arme == arme);
+            foreach(var sam in samWithArmes) 
+            {
+                sam.Arme = null;
+            }
+           
+
+            //if (sams.Where(x => x.Arme != null).Any(x => x.Arme == arme))
+            //{
+            //    return RedirectToAction("Index");
+            //}
             db.Armes.Remove(arme);
             db.SaveChanges();
             return RedirectToAction("Index");
