@@ -117,6 +117,7 @@ namespace Dojo.Controllers
             foreach(var sam in samWithArmes) 
             {
                 sam.Arme = null;
+                db.Entry(sam).State = EntityState.Modified;
             }
            
 

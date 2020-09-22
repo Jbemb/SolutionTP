@@ -99,6 +99,7 @@ public ActionResult Edit(int? id)
         {
             if (ModelState.IsValid)
             {
+                //var sam = db.Samourais.Include(x => x.Arme).FirstOrDefault(x => x.Id == vm.Samourai.Id);
                 Samourai sam = db.Samourais.Find(vm.Samourai.Id);
                 sam.Force = vm.Samourai.Force;
                 sam.Nom = vm.Samourai.Nom;
