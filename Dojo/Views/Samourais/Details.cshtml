@@ -1,4 +1,4 @@
-﻿@model Dojo.Models.SamouraiVM
+﻿@model BODojo.Samourai
 
 @{
     ViewBag.Title = "Details";
@@ -11,32 +11,55 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Samourai.Force)
+            @Html.DisplayNameFor(model => model.Force)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Samourai.Force)
+            @Html.DisplayFor(model => model.Force)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Samourai.Nom)
+            @Html.DisplayNameFor(model => model.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Samourai.Nom)
+            @Html.DisplayFor(model => model.Nom)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Samourai.Arme)
+            @Html.DisplayNameFor(model => model.Arme)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Samourai.Arme.Nom)
+            @Html.DisplayFor(model => model.Arme.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Artmartials)
+        </dt>
+
+        <dd>
+            @if (Model.Artmartials != null)
+            {
+                foreach (var item in Model.Artmartials)
+                {
+                    @Html.DisplayFor(i => item.Nom)<br>
+                }
+
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Potentiel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Potentiel)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Samourai.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

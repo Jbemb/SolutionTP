@@ -30,24 +30,28 @@ namespace Dojo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Samourai samourai = db.Samourais.Find(id);
-            SamouraiVM vm = new SamouraiVM();
-            vm.Samourai = samourai;
-            if (samourai.Arme != null) 
-            {
-                vm.Samourai.Arme = db.Armes.Find(samourai.Arme.Id);
-            }
-            if (samourai == null)
+           if (samourai == null)
             {
                 return HttpNotFound();
             }
-            return View(vm);
+            return View(samourai);
         }
 
         // GET: Samourais/Create
         public ActionResult Create()
         {
             SamouraiVM vm = new SamouraiVM();
-            vm.Armes = db.Armes.ToList();
+
+            var arms = db.Armes.ToList();
+            var rejects = arms.Where(x => db.Samourais.Select(s => s.Arme.Id).Contains(x.Id));
+            vm.Armes = arms.Except(rejects).ToList();
+            //using (var context = new DojoContext()) 
+            //{
+            //    //var armsWithSams = context.Armes.Include(a => a.Samourais).ToList();
+            //  var armWithSamaurai = context.Samourais.Include(s => s.Arme).ToList().Select(x => x.Arme);
+            //    vm.Armes = db.Armes.ToList().Except(armWithSamaurai).ToList();
+            //}
+            vm.ArtMartials = db.ArtMartials.ToList();
             return View(vm);
         }
 
@@ -61,6 +65,17 @@ namespace Dojo.Controllers
             if (ModelState.IsValid)
             {
                 vm.Samourai.Arme = db.Armes.Find(vm.ArmesId);
+                if(vm.ArtMartialsId != null)
+                {
+                    foreach (var item in vm.ArtMartialsId)
+                    {
+                        vm.Samourai.Artmartials = db.ArtMartials.Where(x => vm.ArtMartialsId.Contains(x.Id)).ToList();
+                            
+                    }
+
+                }
+                
+               
                 db.Samourais.Add(vm.Samourai);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,7 +101,10 @@ public ActionResult Edit(int? id)
             }
             SamouraiVM vm = new SamouraiVM();
              vm.Samourai = samourai;
-             vm.Armes = db.Armes.ToList();
+            var arms = db.Armes.ToList();
+            var rejects = arms.Where(x => db.Samourais.Where(s => s.Id != samourai.Id).Select(s => s.Arme.Id).Contains(x.Id));
+            vm.Armes = arms.Except(rejects).ToList();
+            vm.ArtMartials = db.ArtMartials.ToList();
             return View(vm);
         }
 
@@ -100,12 +118,27 @@ public ActionResult Edit(int? id)
             if (ModelState.IsValid)
             {
                 //var sam = db.Samourais.Include(x => x.Arme).FirstOrDefault(x => x.Id == vm.Samourai.Id);
-                Samourai sam = db.Samourais.Find(vm.Samourai.Id);
+                Samourai sam = db.Samourais.Include(s => s.Arme).FirstOrDefault(s => s.Id == vm.Samourai.Id);
+                sam.Artmartials.Clear();
                 sam.Force = vm.Samourai.Force;
-                sam.Nom = vm.Samourai.Nom;
-                if (vm.ArmesId != null) 
+                sam.Nom = vm.Samourai.Nom;              
+                if (vm.ArmesId != null)
                 {
                     sam.Arme = db.Armes.Find(vm.ArmesId);
+                }
+                else {
+                    sam.Arme = null;
+                }
+
+                if (vm.ArtMartialsId != null)
+                {
+                   
+                    foreach (var item in vm.ArtMartialsId)
+                    {
+                        sam.Artmartials = db.ArtMartials.Where(x => vm.ArtMartialsId.Contains(x.Id)).ToList();
+
+                    }
+
                 }
                 db.Entry(sam).State = EntityState.Modified;
                 db.SaveChanges();
@@ -122,17 +155,11 @@ public ActionResult Edit(int? id)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Samourai samourai = db.Samourais.Find(id);
-            SamouraiVM vm = new SamouraiVM();
-            vm.Samourai = samourai;
-            if (samourai.Arme != null)
-            {
-                vm.Samourai.Arme = db.Armes.Find(samourai.Arme.Id);
-            }
             if (samourai == null)
             {
                 return HttpNotFound();
             }
-            return View(vm);
+            return View(samourai);
         }
 
         // POST: Samourais/Delete/5

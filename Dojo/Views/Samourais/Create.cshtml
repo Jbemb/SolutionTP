@@ -31,10 +31,17 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.ArmesId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Armes, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.ArmesId, Model.Armes.Select(x => new SelectListItem() { Text = x.Nom, Value = x.Id.ToString() }), "Aucune arme", new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ArmesId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Samourai.Artmartials, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.ListBoxFor(model => model.ArtMartialsId, Model.ArtMartials.Select(x => new SelectListItem() { Text = x.Nom, Value = x.Id.ToString() }), new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArtMartialsId, "", new { @class = "text-danger" })
         </div>
     </div>
 

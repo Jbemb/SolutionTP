@@ -1,4 +1,5 @@
-﻿using BODojo;
+﻿using BO;
+using BODojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Dojo.Models
         public Samourai Samourai { get; set; }
         public List<Arme> Armes { get; set; }
         public int? ArmesId { get; set; }
+        public IEnumerable<ArtMartial> ArtMartials { get; set; }
+        public List<int> ArtMartialsId { get; set; } = new List<int>();
 
     }
 }
