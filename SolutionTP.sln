@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojo", "Dojo\Dojo.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BODojo", "BODojo\BODojo.csproj", "{0BBA0441-0AB7-4112-946B-521C9CEC7367}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BOOGame", "BOOGame\BOOGame.csproj", "{B2252186-B666-49BD-8682-D1C685F2BF1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ogame", "Ogame\Ogame.csproj", "{7FFAF020-581A-424B-8691-70E785E00555}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{0BBA0441-0AB7-4112-946B-521C9CEC7367}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BBA0441-0AB7-4112-946B-521C9CEC7367}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BBA0441-0AB7-4112-946B-521C9CEC7367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2252186-B666-49BD-8682-D1C685F2BF1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2252186-B666-49BD-8682-D1C685F2BF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2252186-B666-49BD-8682-D1C685F2BF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2252186-B666-49BD-8682-D1C685F2BF1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFAF020-581A-424B-8691-70E785E00555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFAF020-581A-424B-8691-70E785E00555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFAF020-581A-424B-8691-70E785E00555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFAF020-581A-424B-8691-70E785E00555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
