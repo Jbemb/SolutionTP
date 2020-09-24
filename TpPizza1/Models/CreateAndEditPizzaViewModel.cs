@@ -17,7 +17,7 @@ namespace TpPizza1.Models
         public IEnumerable<Ingredient> Ingredients { get; set; }
         [UniqueIngredients]
         [System.ComponentModel.DataAnnotations.Required]
-        [IngredientNumber]
+        [IngredientNumber(2,5)]
         public List<int> IngredientsId { get; set; } = new List<int>();
     }
 }
