@@ -114,20 +114,33 @@ namespace Dojo.Controllers
             Arme arme = db.Armes.Find(id);
             List<Samourai> sams = db.Samourais.ToList();
             var samWithArmes = sams.Where(x => x.Arme == arme);
-            foreach(var sam in samWithArmes) 
+            if (sams.Where(x => x.Arme != null).Any(x => x.Arme == arme))
             {
-                sam.Arme = null;
-                db.Entry(sam).State = EntityState.Modified;
+                ModelState.AddModelError("Arme.Nom",
+                    String.Format("This weapon belongs to {0}. It cannot be deleted.",
+                    samWithArmes.FirstOrDefault().Nom));
+                return View(arme);
             }
-           
+            else 
+            {
+                
+                db.Armes.Remove(arme);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-            //if (sams.Where(x => x.Arme != null).Any(x => x.Arme == arme))
+
+            //TP 1
+
+            
+            //var samWithArmes = sams.Where(x => x.Arme == arme);
+            //foreach(var sam in samWithArmes) 
             //{
-            //    return RedirectToAction("Index");
+            //    sam.Arme = null;
+            //    db.Entry(sam).State = EntityState.Modified;
             //}
-            db.Armes.Remove(arme);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+           
         }
 
         protected override void Dispose(bool disposing)

@@ -65,7 +65,7 @@ namespace Dojo.Controllers
             if (ModelState.IsValid)
             {
                 vm.Samourai.Arme = db.Armes.Find(vm.ArmesId);
-                if(vm.ArtMartialsId != null)
+                if (vm.ArtMartialsId != null)
                 {
                     foreach (var item in vm.ArtMartialsId)
                     {
