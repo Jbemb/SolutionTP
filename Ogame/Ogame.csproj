@@ -134,6 +134,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009251202478_first.cs" />
+    <Compile Include="Migrations\202009251202478_first.Designer.cs">
+      <DependentUpon>202009251202478_first.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -211,6 +215,11 @@
       <Project>{b2252186-b666-49bd-8682-d1c685f2bf1b}</Project>
       <Name>BOOGame</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009251202478_first.resx">
+      <DependentUpon>202009251202478_first.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

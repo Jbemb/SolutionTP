@@ -1,0 +1,40 @@
+﻿@model BODojo.Samourai
+
+<dt>
+    @Html.DisplayNameFor(model => model.Force)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.Force)
+</dd>
+
+<dt>
+    @Html.DisplayNameFor(model => model.Nom)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.Nom)
+</dd>
+
+<dt>
+    @Html.DisplayNameFor(model => model.Arme)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.Arme.Nom)
+</dd>
+
+<dt>
+    @Html.DisplayNameFor(model => model.Artmartials)
+</dt>
+
+<dd>
+    @if (Model.Artmartials != null)
+    {
+        foreach (var item in Model.Artmartials)
+        {
+            @Html.DisplayFor(i => item.Nom)<br>
+        }
+
+    }
+</dd>
